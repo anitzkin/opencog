@@ -9,6 +9,10 @@
                 (VariableNode "$subj")
                 (TypeNode "WordInstanceNode")
             )
+	    (TypedVariableLink
+                (VariableNode "$subj2")
+                (TypeNode "WordInstanceNode")
+            )
             (TypedVariableLink
                 (VariableNode "$verb1")
                 (TypeNode "WordInstanceNode")
@@ -60,6 +64,14 @@
                         (VariableNode "$verb1")
                         (VariableNode "$verb2")
                     )
+                )
+		(AbsentLink
+			(EvaluationLink
+                    		(DefinedLinguisticRelationshipNode "_subj")
+                    			(ListLink
+                        			(VariableNode "$verb2")
+                        			(VariableNode "$subj2")
+                    	)
                 )
             )
             (ExecutionOutputLink

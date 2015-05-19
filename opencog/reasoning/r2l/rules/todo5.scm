@@ -16,6 +16,14 @@
             (TypedVariableLink
                 (VariableNode "$verb2")
                 (TypeNode "WordInstanceNode")
+            )
+	    (TypedVariableLink
+                (VariableNode "$subj2")
+                (TypeNode "WordInstanceNode")
+            )
+	    (TypedVariableLink
+                (VariableNode "$obj")
+                (TypeNode "WordInstanceNode")
             )		
         )
         (ImplicationLink
@@ -46,6 +54,21 @@
                         (VariableNode "$verb2")
                     )
                 )
+		(AbsentLink
+			(AndLink
+				(EvaluationLink
+                	    		(DefinedLinguisticRelationshipNode "_subj")
+                	    			(ListLink
+                	        			(VariableNode "$verb2")
+                	        			(VariableNode "$subj2")
+                	    	)
+				(EvaluationLink
+                	    		(DefinedLinguisticRelationshipNode "_obj")
+                	    			(ListLink
+                	        			(VariableNode "$verb2")
+                	        			(VariableNode "$obj")
+                	    	)
+                	)
             )
             (ExecutionOutputLink
            	   (GroundedSchemaNode "scm: pre-todo5-rule")
