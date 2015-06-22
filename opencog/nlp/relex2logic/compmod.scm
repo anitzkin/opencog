@@ -3,7 +3,7 @@
 ; rule constructs the "if" phrase.  It may be hard to predict when this rule
 ; will fire because there are other rules for some specific complementizers,
 ; that work sometimes, and it seems right now, relex is giving _rel sometimes
-; when it should give _comp, which doesn't really make any difference . . .
+; when it should give _comp, which I will try to correct this week  . . .
 ; (AN June 21015)
 
 (define compmod
@@ -34,8 +34,8 @@
             (EvaluationLink
                 (DefinedLinguisticRelationshipNode "_compmod")
                 (ListLink
-                    (VariableNode "$pred")
-		(VariableNode "$comp")     
+                    	(VariableNode "$pred")
+			(VariableNode "$comp")     
                 )
             )
         )

@@ -1124,7 +1124,7 @@
 	)
 )
 
-(define (compmod-rule comp_concept comp_instance pred_concept pred_instance)
+(define (compmod-rule pred_concept pred_instance comp_concept comp_instance)
 	(list 
 		(ImplicationLink (PredicateNode comp_instance) (PredicateNode comp_concept))
 		(ImplicationLink (PredicateNode pred_instance) (PredicateNode pred_concept))
@@ -1133,6 +1133,63 @@
 			(ListLink
 				(PredicateNode pred_instance)
 				(ConceptNode comp_instance)
+			)
+		)
+	)
+)
+
+(define (relmodsubj-rule subj_concept subj_instance rel_concept rel_instance pred_concept pred_instance)
+	(list 
+		(ImplicationLink (PredicateNode rel_instance) (PredicateNode rel_concept))
+		(InheritanceLink (ConceptNode subj_instance) (ConceptNode subj_concept))
+		(ImplicationLink (PredicateNode pred_instance) (PredicateNode pred_concept))
+		(InheritanceLink
+			(ConceptNode subj_instance)
+			(EvaluationLink 
+				(PredicateNode pred_instance)
+				(ListLink
+					(ConceptNode subj_instance)
+				)
+			)
+		)
+	)
+)
+
+(define (relmodobj-rule obj_concept obj_instance rel_concept rel_instance subj_concept subj_instance pred_concept pred_instance)
+	(list 
+		(ImplicationLink (PredicateNode rel_instance) (PredicateNode rel_concept))
+		(InheritanceLink (ConceptNode obj_instance) (ConceptNode obj_concept))
+		(InheritanceLink (ConceptNode subj_instance) (ConceptNode subj_concept))
+		(ImplicationLink (PredicateNode pred_instance) (PredicateNode pred_concept))
+		(InheritanceLink
+			(ConceptNode obj_instance)
+			(EvaluationLink			
+				(PredicateNode pred_instance)
+				(ListLink
+					(ConceptNode subj_instance)
+				)	(ConceptNode obj_instance)	
+			)
+	
+		)	
+	)
+)
+
+(define (relmodiobj-rule iobj_concept iobj_instance rel_concept rel_instance subj_concept subj_instance pred_concept pred_instance obj_concept obj_instance)
+	(list 
+		(ImplicationLink (PredicateNode rel_instance) (PredicateNode rel_concept))
+		(InheritanceLink (ConceptNode iobj_instance) (ConceptNode iobj_concept))
+		(InheritanceLink (ConceptNode subj_instance) (ConceptNode subj_concept))
+		(ImplicationLink (PredicateNode pred_instance) (PredicateNode pred_concept))
+		(InheritanceLink (ConceptNode iobj_instance) (ConceptNode iobj_concept))
+		(InheritanceLink
+			(ConceptNode iobj_instance)
+			(EvaluationLink
+				(PredicateNode pred_instance)
+				(ListLink
+					(ConceptNode subj_instance)
+					(ConceptNode obj_instance)
+					(ConceptNode iobj_instance)
+				)
 			)
 		)
 	)
